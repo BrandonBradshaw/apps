@@ -1,0 +1,11 @@
+{
+  "name": "hiveos",
+  "version": "1.0.0",
+  "description": "Serving respoonse from HiveOs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sideeq Abdwaheed",
+  "license": "ISC"
+}
