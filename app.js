@@ -8,15 +8,15 @@ app.set("view engine", "ejs")
 
 
 // setting the URL ands the Access token
-let accessToken = null ;
+let accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkiLCJpYXQiOjE2MTg1MTI4MDUsImV4cCI6MTkzMzg3MjgwNSwibmJmIjoxNjE4NTEyODA1LCJqdGkiOjMwODM0OTgyLCJzdWIiOjMwODM0OTgyfQ.NPAibUotac6TNCgtxMV3LJTeUswuTRk6xGCUCwmHIAQ ;
 const baseUrl = 'https://api2.hiveos.farm/api/v2';
 
 
 
 // Home page for the data
 app.get("/", (req, res)=>{
-    doLogin('bradshaw17', 'MrSirdiq123')
-    .then(getFarms)
+    // doLogin('bradshaw17', 'MrSirdiq123')
+    getFarms()
     .then(farms => console.log('farms=', farms));
      res.render("index")
 })
