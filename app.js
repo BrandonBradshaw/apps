@@ -50,7 +50,7 @@ function doLogin(login , password) {
 // Getting details function
 function getFarms() {
     return fetch(`${baseUrl}/farms`, {
-        method: 'GET',
+        method : 'GET',
         headers: {
             'Authorization': `Bearer ${accessToken}`,
         }
