@@ -12,16 +12,18 @@ let accessToken = null ;
 const baseUrl = 'https://api2.hiveos.farm/api/v2';
 
 
+
+// Home page for the data
 app.get("/", (req, res)=>{
     doLogin('bradshaw17', 'MrSirdiq123')
     .then(getFarms)
     .then(farms => console.log('farms=', farms));
-
-
     // res.render("index")
 })
 
 
+
+// activating login to the account
 function doLogin(login , password) {
     return fetch(`${baseUrl}/auth/login`, {
         method: 'POST',
@@ -33,7 +35,7 @@ function doLogin(login , password) {
         if (!r.ok) {
             r.json().then(data => {
                 console.error(data.message || ' Response error');
-                res.send(data.message)
+                res.render("index")
             });
             return Promise.reject(r);
         }
