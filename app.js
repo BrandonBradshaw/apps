@@ -18,7 +18,7 @@ app.get("/", (req, res)=>{
     doLogin('bradshaw17', 'MrSirdiq123')
     .then(getFarms)
     .then(farms => console.log('farms=', farms));
-    // res.render("index")
+     res.render("index")
 })
 
 
@@ -35,7 +35,6 @@ function doLogin(login , password) {
         if (!r.ok) {
             r.json().then(data => {
                 console.error(data.message || ' Response error');
-                res.render("index")
             });
             return Promise.reject(r);
         }
