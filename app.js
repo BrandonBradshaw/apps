@@ -8,7 +8,7 @@ app.set("view engine", "ejs")
 
 
 // setting the URL ands the Access token
-// let accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkiLCJpYXQiOjE2MTg2NDE5ODIsImV4cCI6MTkzNDAwMTk4MiwibmJmIjoxNjE4NjQxOTgyLCJqdGkiOjMwOTY5MDgyLCJzdWIiOjMwOTY5MDgyfQ.Gt4wQm95SAiuDs4HF6VvT9H-0g-lFX8r_JBFU7ZiLGk;
+let accessToken = null ;
 const baseUrl = 'https://api2.hiveos.farm/api/v2';
 
 
@@ -16,6 +16,11 @@ app.get("/", (req, res)=>{
     doLogin('bradshaw17', 'MrSirdiq123')
     .then(getFarms)
     .then(farms => console.log('farms=', farms));
+
+
+    // res.render("index")
+})
+
 
 function doLogin(login , password) {
     return fetch(`${baseUrl}/auth/login`, {
@@ -27,7 +32,8 @@ function doLogin(login , password) {
     }).then(r => {
         if (!r.ok) {
             r.json().then(data => {
-                console.error(data.message || 'Response error');
+                console.error(data.message || ' Response error');
+                res.send(data.message)
             });
             return Promise.reject(r);
         }
@@ -39,6 +45,8 @@ function doLogin(login , password) {
         }
     })
 }
+
+// Getting details function
 function getFarms() {
     return fetch(`${baseUrl}/farms`, {
         method: 'GET',
@@ -57,9 +65,6 @@ function getFarms() {
         }
     });
 }
-
-    res.render("index")
-})
 
 
 app.listen(3030, ()=>{
