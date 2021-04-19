@@ -6,13 +6,15 @@ const fetch = require("node-fetch")
 const app = express()
 app.set("view engine", "ejs")
 
+// implementing dotenv file
+require("dotenv").config()
 
 // setting the URL ands the Access token
-let accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkiLCJpYXQiOjE2MTg1MTI4MDUsImV4cCI6MTkzMzg3MjgwNSwibmJmIjoxNjE4NTEyODA1LCJqdGkiOjMwODM0OTgyLCJzdWIiOjMwODM0OTgyfQ.NPAibUotac6TNCgtxMV3LJTeUswuTRk6xGCUCwmHIAQ ;
+let accessToken = process.env.AccessToken
 const baseUrl = 'https://api2.hiveos.farm/api/v2';
 
 
-
+console.log(accessToken)
 // Home page for the data
 app.get("/", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123')
