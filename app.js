@@ -1,8 +1,9 @@
 "use-strict;"
 
 const express = require("express");
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 const doLogin = require('./modules/login')
+const getFarms = require("./modules/getFarms")
 
 const app = express()
 app.set("view engine", "ejs")
@@ -19,35 +20,11 @@ console.log(accessToken)
 // Home page for the data
 app.get("/", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)
-    getFarms()
+    getFarms(baseUrl, accessToken)
     .then(farms => console.log('farms=', farms));
      res.render("index")
 })
 
-
-
-// activating login to the account
-
-
-// Getting details function
-function getFarms() {
-    return fetch(`${baseUrl}/farms`, {
-        method : 'GET',
-        headers: {
-            'Authorization': `Bearer ${accessToken}`,
-        }
-    }).then(r => {
-        if (!r.ok) {
-            r.json().then(data => {
-                console.error(data.message || 'Response error');
-            });
-            return Promise.reject(r);
-        }
-        else {
-            return r.json();
-        }
-    });
-}
 
 
 app.listen(3030, ()=>{
