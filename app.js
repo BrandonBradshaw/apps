@@ -1,7 +1,7 @@
 "use-strict;"
 
+// modules layers
 const express = require("express");
-// const fetch = require("node-fetch");
 const doLogin = require('./modules/login')
 const getFarms = require("./modules/getFarms")
 
@@ -16,7 +16,7 @@ let accessToken = process.env.AccessToken
 const baseUrl = 'https://api2.hiveos.farm/api/v2';
 
 
-console.log(accessToken)
+
 // Home page for the data
 app.get("/", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)

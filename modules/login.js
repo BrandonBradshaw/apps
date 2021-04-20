@@ -1,3 +1,5 @@
+
+// Declaring the login modules
 const doLogin = (login , password, baseUrl) => {
         return fetch(`${baseUrl}/auth/login`, {
             method: 'POST',

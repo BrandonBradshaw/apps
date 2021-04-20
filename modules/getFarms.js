@@ -1,5 +1,7 @@
 const fetch = require("node-fetch")
 
+
+// Getting the fetched content
 const getFarms = (baseUrl, accessToken) => {
     return fetch(`${baseUrl}/farms`, {
         method : 'GET',
