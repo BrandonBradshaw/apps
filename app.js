@@ -1,7 +1,8 @@
 "use-strict;"
 
 const express = require("express");
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
+const doLogin = require('./modules/login')
 
 const app = express()
 app.set("view engine", "ejs")
@@ -17,7 +18,7 @@ const baseUrl = 'https://api2.hiveos.farm/api/v2';
 console.log(accessToken)
 // Home page for the data
 app.get("/", (req, res)=>{
-    // doLogin('bradshaw17', 'MrSirdiq123')
+    // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)
     getFarms()
     .then(farms => console.log('farms=', farms));
      res.render("index")
@@ -26,28 +27,7 @@ app.get("/", (req, res)=>{
 
 
 // activating login to the account
-function doLogin(login , password) {
-    return fetch(`${baseUrl}/auth/login`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({login, password})
-    }).then(r => {
-        if (!r.ok) {
-            r.json().then(data => {
-                console.error(data.message || ' Response error');
-            });
-            return Promise.reject(r);
-        }
-        else {
-            return r.json().then(data => {
-                accessToken = data.access_token;
-                return data;
-            });
-        }
-    })
-}
+
 
 // Getting details function
 function getFarms() {
