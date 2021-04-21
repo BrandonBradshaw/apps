@@ -25,8 +25,14 @@ app.get("/", (req, res)=>{
      res.render("index")
 })
 
+app.get("/login", (req, res)=>{
+    res.render("login")
+})
+app.post("/login", (req, res)=>{
+    res.render("index")
+})
 
-
+7/
 app.listen(3030, ()=>{
     console.log("Server running on port 3030")
 })
