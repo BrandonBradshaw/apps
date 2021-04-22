@@ -4,6 +4,7 @@
   "description": "Serving respoonse from HiveOs",
   "main": "app.js",
   "scripts": {
+    "build:css" : "taiwind build public/Home.css -o public/Home.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sideeq Abdwaheed",
