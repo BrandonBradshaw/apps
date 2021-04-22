@@ -7,6 +7,7 @@ const getFarms = require("./modules/getFarms")
 
 const app = express()
 app.set("view engine", "ejs")
+app.use(express.static(__dirname + "/public"))
 
 // implementing dotenv file
 require("dotenv").config()
@@ -20,8 +21,8 @@ const baseUrl = 'https://api2.hiveos.farm/api/v2';
 // Home page for the data
 app.get("/", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)
-    getFarms(baseUrl, accessToken)
-    .then(farms => console.log('farms=', farms));
+    // getFarms(baseUrl, accessToken)
+    // .then(farms => console.log('farms=', farms));
      res.render("index")
 })
 
