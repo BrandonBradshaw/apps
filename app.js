@@ -39,7 +39,7 @@ const LoginSchema = mongoose.Schema({
 const User = mongoose.model("Users", LoginSchema)
 
 // Home page for the data
-app.post("/home", (req, res)=>{
+app.get("/home", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)
     getFarms(baseUrl, accessToken)
     .then(farms =>{
@@ -102,6 +102,9 @@ app.post("/home", (req, res)=>{
 app.get("/", (req, res)=>{
     res.render("login")
 })
+// app.get("/home",(req, res)=>{VN 
+
+// })
 
 
 // app.post("/", (req, res)=>{
