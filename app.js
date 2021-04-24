@@ -16,13 +16,22 @@ require("dotenv").config()
 let accessToken = process.env.AccessToken
 const baseUrl = 'https://api2.hiveos.farm/api/v2';
 
+let results = {
+    "datalist"  : [],
+}
+
 
 
 // Home page for the data
 app.get("/", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)
-    // getFarms(baseUrl, accessToken)
-    // .then(farms => console.log('farms=', farms));
+    getFarms(baseUrl, accessToken)
+    .then(farms => {
+        let lists = farms.data;
+        lists.map((list)=>{
+            console.log(list)
+        })
+    });
      res.render("index")
 })
 
@@ -30,6 +39,11 @@ app.get("/login", (req, res)=>{
     res.render("login")
 })
 app.post("/", (req, res)=>{
+    getFarms(baseUrl, accessToken)
+    .then(farms =>{
+        results.datalist = farms.data;
+        console.log(results.datalist)
+    })
     res.render("index")
 })
 
