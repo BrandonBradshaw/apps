@@ -17,11 +17,11 @@
         <table class="border border-seperate border-green-800">
             <thead class="">
                 <tr>
-                    <th class="border border-green-600 px-2 py-2 bg-black text-white">GPU_red_temp</th>
-                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asic_red_temp</th>
-                    <th class="border border-green-600 px-2 py-2 bg-black text-white">GPU_red_fan</th>
-                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asic_red_fan</th>
-                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpu_red_CPU_temp</th>
+                    <th class="border border-green-600 px-2 py-2 bg-gray-500 text-white">GPU_red_temp</th>
+                    <th class="border border-green-600 px-2 py-2 bg-gray-500 text-white">Asic_red_temp</th>
+                    <th class="border border-green-600 px-2 py-2 bg-gray-500 text-white">GPU_red_fan</th>
+                    <th class="border border-green-600 px-2 py-2 bg-gray-500 text-white">Asic_red_fan</th>
+                    <th class="border border-green-600 px-2 py-2 bg-gray-500 text-white">Gpu_red_CPU_temp</th>
                     <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpu_red_mem_temp</th>
                     <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpu_red_asr</th>
                     <th class="border border-green-600 px-2 py-2 bg-black text-white">Asic_red_asr</th>
@@ -58,7 +58,7 @@
             <tbody>
                 <tr>
                     <% money.forEach((tem)=>{ %>
-                        <td  class="text-center"> <%= tem %></td>
+                        <td  class="text-center border border seperate"> <%= tem %></td>
                      <% }) %>
                 </tr>
             </tbody>
@@ -67,25 +67,51 @@
         <!-- Layout showing the content of the Stats -->
 
         <h4 class="font-semibold text-xl text-center">STATS LAYOUT ! </h4>
-        <table class="border border-green-800 border-seperate my-4">
-            <thead class="border border-green-600 px-2 bg-black text-white">
+        <table class="my-2">
+            <thead>
                 <tr>
-                    <th>Worker total</th>
-                    <th>Worker offline</th>
-                    <th>Worker online</th>
-                    <th>Workers overheated</th>
-                    <th>Rigs total</th>
-                    <th>Rigs online</th>
-                    <th>Rigs offline</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpus total</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpus online</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpus offline</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asics total</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asics online</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asics offline</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Boards total</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white" >Boards online</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white" >Boards offline</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Boards overheated</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white" >CPUS online</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Power Draw</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% second_stats.forEach((sec)=>{ %>
+                        <td class="text-center"><%= sec %></td>
+                    <% }) %>
+                </tr>
+            </tbody>
+        </table>
+        <table class="border border-green-800 border-seperate my-4">
+            <thead>
+                <tr>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Worker total</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Worker offline</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Worker online</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Workers overheated</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white"> Workers overloaded</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Rigs total</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Rigs online</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white" >Rigs offline</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <% first_stats.forEach((stat)=>{ %>
-                        <td><%= stat %></td>
+                        <td class="text-center"><%= stat %></td>
                      <% })%>
                 </tr>
             </tbody>
         </table>
-</body>
+       
 <%- include("./partials/footer") %>

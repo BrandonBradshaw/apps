@@ -62,7 +62,7 @@ app.get("/", (req, res)=>{
                      stats.rigs_total, stats.rigs_online, stats.rigs_offline,
                 ]
                 let second_stats = [
-                    stats.gpus_total, stats.gpus_online, stats.gpus.offline,
+                    stats.gpus_total, stats.gpus_online, stats.gpus_offline,
                     stats.asics_total, stats.asics_online, stats.asics_offline, stats.boards_total,
                     stats.boards_online, stats.boards_offline, stats.boards_overheated, 
                     stats.cpus_online, stats.power_draw
