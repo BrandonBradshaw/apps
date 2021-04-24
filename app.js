@@ -29,7 +29,9 @@ app.get("/", (req, res)=>{
     .then(farms => {
         let lists = farms.data;
         lists.map((list)=>{
-            console.log(list.id, list.name)
+            if(list.name == "FinalTest"){
+                console.log(list)
+            }
         })
     });
      res.render("index")
