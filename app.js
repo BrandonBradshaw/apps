@@ -56,10 +56,10 @@ app.post("/", (req, res)=>{
     getFarms(baseUrl, accessToken)
     .then(farms =>{
         results.datalist = farms.data;
-        console.log(results.datalist)
+        // console.log(results.datalist)
     })
     console.log(req.body)
-    res.render("index")
+    res.render("index", { localname : "testing", owner : "", worker : "", rig_count : "", disabled_rigs : ""})
 })
 
 7/
