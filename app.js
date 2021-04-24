@@ -45,7 +45,7 @@ app.get("/", (req, res)=>{
                 // temperature array
                 let Temp = [ result.gpu_red_temp, result.asic_red_temp, result.gpu_red_fan, result.asic_red_fan,
                 result.gpu_red_cpu_temp, result.gpu_red_mem_temp,
-                 result.gpu_red_asr, result.asic_red_asr, result.gpu_red_las, result.asic_red_la ]
+                 result.gpu_red_asr, result.asic_red_asr, result.gpu_red_la, result.asic_red_la ]
 
                 //  money content
                 const money = result.money
