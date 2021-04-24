@@ -4,13 +4,88 @@
     
     <h2 class="text-2xl font-semibold text-center">Welcome to the Dashboard</h2>
 
-    <div class="container details">
-        Name : <%= localname %>
-        Owner : <%= owner %>
-        Worker count : <%= worker %>
-        Rigs count : <%= rig_count %>
-        Disabled Rigs : <%= disabled_rigs %>
+    <div class="container details  mx-auto mb-8">
+        Name : <%= localname %> <br/>
+        Owner : <%= owner %> <br/>
+        Worker count : <%= worker %> <br/>
+        Rigs count : <%= rig_count %> <br/>
+        Disabled Rigs : <%= disabled_rigs %> <br/>
 
     </div>
+         <!-- Layout showing the temperature of the rigs -->
+        <h4 class="font-semibold text-xl text-center">Temp Layout</h4>
+        <table class="border border-seperate border-green-800">
+            <thead class="">
+                <tr>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">GPU_red_temp</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asic_red_temp</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">GPU_red_fan</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asic_red_fan</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpu_red_CPU_temp</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpu_red_mem_temp</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpu_red_asr</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asic_red_asr</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Gpu_red_la</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Asic_red_la</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% temp.forEach((tem)=>{ %>
+                        <td  class="text-center"> <%= tem %></td>
+                     <% }) %>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- layout showing the Money layout  -->
+        <h4 class="font-semibold text-xl text-center">Money Layout</h4>
+        <table class="border border-seperate border-green-800 my-4">
+            <thead class="">
+                <tr>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Payment status</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Balance</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Discount</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Daily cost</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Monthly cost</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Daily price</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Daily use rigs</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Daily use asr</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Price per rigs</th>
+                    <th class="border border-green-600 px-2 py-2 bg-black text-white">Price per asic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% money.forEach((tem)=>{ %>
+                        <td  class="text-center"> <%= tem %></td>
+                     <% }) %>
+                </tr>
+            </tbody>
+        </table>
+  
+        <!-- Layout showing the content of the Stats -->
+
+        <h4 class="font-semibold text-xl text-center">STATS LAYOUT ! </h4>
+        <table class="border border-green-800 border-seperate my-4">
+            <thead class="border border-green-600 px-2 bg-black text-white">
+                <tr>
+                    <th>Worker total</th>
+                    <th>Worker offline</th>
+                    <th>Worker online</th>
+                    <th>Workers overheated</th>
+                    <th>Rigs total</th>
+                    <th>Rigs online</th>
+                    <th>Rigs offline</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% first_stats.forEach((stat)=>{ %>
+                        <td><%= stat %></td>
+                     <% })%>
+                </tr>
+            </tbody>
+        </table>
 </body>
 <%- include("./partials/footer") %>
