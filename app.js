@@ -29,7 +29,7 @@ app.get("/", (req, res)=>{
     .then(farms => {
         let lists = farms.data;
         lists.map((list)=>{
-            console.log(list)
+            console.log(list.id, list.name)
         })
     });
      res.render("index")
