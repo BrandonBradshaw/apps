@@ -2,10 +2,12 @@
 
 // modules layers
 const express = require("express");
+const bodyParser = require("body-parser")
 const doLogin = require('./modules/login')
 const getFarms = require("./modules/getFarms")
 
 const app = express()
+app.use(bodyParser.urlencoded({extended: true}))
 app.set("view engine", "ejs")
 app.use(express.static(__dirname + "/public"))
 
@@ -20,17 +22,27 @@ let results = {
     "datalist"  : [],
 }
 
-
+// creating Details section
+ let Details = {
+     name : "",
+     owner : "",
+     worker : "",
+     rig_count : ""
+ }
 
 // Home page for the data
 app.get("/", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)
     getFarms(baseUrl, accessToken)
     .then(farms => {
+        console.log(req.body)
         let lists = farms.data;
         lists.map((list)=>{
             if(list.name == "FinalTest"){
                 console.log(list)
+                res.render("index", {
+                    Username : Details.name
+                })
             }
         })
     });
@@ -46,6 +58,7 @@ app.post("/", (req, res)=>{
         results.datalist = farms.data;
         console.log(results.datalist)
     })
+    console.log(req.body)
     res.render("index")
 })
 
