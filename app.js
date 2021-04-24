@@ -5,6 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser")
 const session = require("express-session")
 const doLogin = require('./modules/login')
+const mongoose = require("mongoose")
 const getFarms = require("./modules/getFarms")
 
 const app = express()
@@ -15,6 +16,12 @@ app.use(express.static(__dirname + "/public"))
 // implementing dotenv file
 require("dotenv").config()
 
+
+// connecting to mongodb
+mongoose.connect(process.env.mongoDB, { useNewUrlParser: true, useUnifiedTopology : true})
+mongoose.set("useCreateIndex", true)
+
+
 // setting the URL ands the Access token
 let accessToken = process.env.AccessToken
 const baseUrl = 'https://api2.hiveos.farm/api/v2';
@@ -23,7 +30,13 @@ let results = {
     "datalist"  : [],
 }
 
-// creating Details section
+
+const LoginSchema = mongoose.Schema({
+    name : String,
+    password : String
+})
+
+const User = mongoose.model("Users", LoginSchema)
 
 // Home page for the data
 app.get("/", (req, res)=>{
