@@ -107,7 +107,7 @@ app.post("/", (req, res)=>{
 })
 
 7/
-app.listen(3030, ()=>{
+app.listen(process.env.PORT || 3030, ()=>{
     console.log("Server running on port 3030")
 })
 
