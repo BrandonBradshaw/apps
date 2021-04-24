@@ -39,7 +39,7 @@ const LoginSchema = mongoose.Schema({
 const User = mongoose.model("Users", LoginSchema)
 
 // Home page for the data
-app.get("/", (req, res)=>{
+app.post("/", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)
     getFarms(baseUrl, accessToken)
     .then(farms =>{
@@ -99,14 +99,15 @@ app.get("/", (req, res)=>{
         })
 })
 
-app.get("/login", (req, res)=>{
+app.get("/", (req, res)=>{
     res.render("login")
 })
-app.post("/", (req, res)=>{
-  res.redirect("/")
-})
 
-7/
+
+// app.post("/", (req, res)=>{
+//   res.redirect("/")
+// })
+
 app.listen(process.env.PORT || 3030, ()=>{
     console.log("Server running on port 3030")
 })
