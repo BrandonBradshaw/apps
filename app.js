@@ -54,7 +54,7 @@ app.post("/", (req, res)=>{
                     Disabled_rigs : result.disabled_rigs_count ,
                     id : result.owner.id
                 }
-                console.log(result)
+                // console.log(result)
 
                 // temperature array
                 let Temp = [ result.gpu_red_temp, result.asic_red_temp, result.gpu_red_fan, result.asic_red_fan,
