@@ -145,7 +145,7 @@ app.post("/", (req, res)=>{
                 passport.authenticate("local", {
                     successRedirect : "/", failureRedirect : "/login"
                 })(req, res)
-                console.log("accessed!")
+                // console.log("accessed!")
             }else  if(!data){
              User.register({ username : username}, password, function(err, user){
                  if(err){
@@ -154,7 +154,7 @@ app.post("/", (req, res)=>{
                      passport.authenticate("local",{
                          successRedirect  : "/", failureRedirect: "/login"
                      })(req, res)
-                     console.log("saved")
+                    //  console.log("saved")
                  }
              })
          }
