@@ -141,25 +141,26 @@ app.post("/", (req, res)=>{
     let pass = "FinalTest"
     if(email == "abdwaheed2018@gmail.com" && password == pass){
         User.findOne({password : password}, (err, data)=>{
-            if(!err){
-                if(data == null){ 
-                   const newData = new User({
-                       email : email,
-                       password : password
-                   })
-                   newData.save()
-                   passport.authenticate("local")(err, res, function(){
-                       if(err){console.log("error auth")}
-                       res.redirect("/")
-                   })
-                   res.redirect("/")
-                }else{
-                    passport.authenticate("local")(err, res, function(){
-                        if(err){console.log("saved error")}
-                        res.redirect("/")
-                    })
-                }
-            }
+         if(data){
+         }else if(!data){
+             User.register({ username : email}, password, function(err, user){
+                 if(err){
+                     console.log(err)
+                 }else{
+                     passport.authenticate("local")(req, res, function(){
+                            console.log("authenticated")
+                         res.redirect("/")
+                     })
+                     console.log("saved")
+                 }
+             })
+             console.log("no data")
+         }else{
+             passport.authenticate("local")(req, res, function(){
+                 console.log("authenticated")
+                 res.redirect("/")
+             })
+         }
         })
     }else{
         res.redirect("/login")
