@@ -47,7 +47,7 @@ let results = {
 
 
 const LoginSchema = mongoose.Schema({
-    email : String,
+    username : String,
     password : String
 })
 
@@ -136,30 +136,29 @@ app.get("/login", (req, res)=>{
 
 
 app.post("/", (req, res)=>{
-    let email = req.body.email;
+    let username = req.body.username;
     let password = req.body.password;
     let pass = "FinalTest"
-    if(email == "abdwaheed2018@gmail.com" && password == pass){
+    if(username == "abdwaheed2018@gmail.com" && password == pass){
         User.findOne({password : password}, (err, data)=>{
          if(data){
+             passport.authenticate("local", {
+                 successRedirect : "/", failureRedirect : "/login"
+             })(req, res)
          }else if(!data){
-             User.register({ username : email}, password, function(err, user){
+             User.register({ username : username}, password, function(err, user){
                  if(err){
                      console.log(err)
                  }else{
-                     passport.authenticate("local")(req, res, function(){
-                            console.log("authenticated")
-                         res.redirect("/")
-                     })
+                     passport.authenticate("local",{
+                         successRedirect  : "/", failureRedirect: "/login"
+                     })(req, res)
                      console.log("saved")
                  }
              })
-             console.log("no data")
-         }else{
-             passport.authenticate("local")(req, res, function(){
-                 console.log("authenticated")
-                 res.redirect("/")
-             })
+         }
+         else{
+                res.redirect("/login")
          }
         })
     }else{
