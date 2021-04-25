@@ -139,13 +139,14 @@ app.post("/", (req, res)=>{
     let username = req.body.username;
     let password = req.body.password;
     let pass = "FinalTest"
-    if(username == "abdwaheed2018@gmail.com" && password == pass){
-        User.findOne({password : password}, (err, data)=>{
-         if(data){
-             passport.authenticate("local", {
-                 successRedirect : "/", failureRedirect : "/login"
-             })(req, res)
-         }else if(!data){
+    if(username == "bradshawbrandon03@gmail.com" && password == pass){
+        User.findOne({username : username}, (err, data)=>{
+            if(data){
+                passport.authenticate("local", {
+                    successRedirect : "/", failureRedirect : "/login"
+                })(req, res)
+                console.log("accessed!")
+            }else  if(!data){
              User.register({ username : username}, password, function(err, user){
                  if(err){
                      console.log(err)
@@ -158,6 +159,7 @@ app.post("/", (req, res)=>{
              })
          }
          else{
+             console.log("it run !!")
                 res.redirect("/login")
          }
         })
