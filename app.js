@@ -38,11 +38,7 @@ const LoginSchema = mongoose.Schema({
 
 const User = mongoose.model("Users", LoginSchema)
 
-const Hardcode = new User({
-    email : "abdwaheed2018@gmail.com",
-    password : "1122334"
-})
-Hardcode.save()
+
 // Home page for the data
 app.get("/", (req, res)=>{
     // doLogin('bradshaw17', 'MrSirdiq123', baseUrl)
@@ -115,7 +111,6 @@ app.get("/login", (req, res)=>{
 app.post("/", (req, res)=>{
     let email = req.body.email;
     let password = req.body.password;
-    // console.log(email + " " + password)
     User.findOne({email : email }, (err, data)=>{
         if(!err){
             if(data == null){
@@ -125,6 +120,7 @@ app.post("/", (req, res)=>{
                 console.log(data)
             }else{
                 console.log(err)
+                return err;
             }
         }
     })
