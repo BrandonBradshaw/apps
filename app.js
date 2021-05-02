@@ -9,7 +9,7 @@ const session = require("express-session")
 const doLogin = require('./modules/login')
 const mongoose = require("mongoose")
 const getFarms = require("./modules/getFarms");
-const { data } = require("autoprefixer");
+// const { data } = require("autoprefixer");
 
 const app = express()
 app.use(bodyParser.urlencoded({extended: true}))
